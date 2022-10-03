@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "../Link/Link";
+import { Bars3Icon } from "@heroicons/react/24/solid";
 
 const NavBar = () => {
+  const [open, setOpen] = useState(false);
   const routes = [
     { id: 1, name: "Home", path: "./home" },
     { id: 2, name: "Products", path: "./home" },
@@ -11,6 +13,12 @@ const NavBar = () => {
   ];
   return (
     <nav>
+      <Bars3Icon
+        onClick={() => setOpen(!open)}
+        className="h-6 w-6 text-blue-500"
+      />
+      <span>{open ? "open" : "close"}</span>
+
       <ul className="md:flex justify-center">
         {routes.map((route) => (
           <Link key={route.id} route={route}></Link>
